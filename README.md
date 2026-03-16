@@ -6,8 +6,14 @@ Ja, i nie ja
 
 ## Instrukcja uruchomienia
 1. Sklonuj repozytorium
-```git clone https://github.com/S1iwa/Temp-python.git```
+```bash
+git clone https://github.com/S1iwa/Temp-python.git
+```
 2. Zainstaluj wymagane biblioteki
-```pip install -r requirements.txt```
-3. Uruchom program
-```python src/main.py```
+```bash
+pip install -r requirements.txt
+```
+4. Uruchom program
+```bash
+python src/main.py
+```
