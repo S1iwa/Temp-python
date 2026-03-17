@@ -1,8 +1,12 @@
-# TBD-python
+# Pytonuhy-python
 Repozytorium do laboratoriów Języki skryptowe prowadzone w języku Python w semestrze letnim 2025/2026
 
 ## Skład zespołu
-Ja, i nie ja
+- Michał Śliwa
+- Miłosz Przybył
+
+## Opis
+Projekt ma na celu nauczenie korzystania z Języków skryptowych, w tym przypadku pythona oraz przygotowanie do pracy z Git`em.
 
 ## Instrukcja uruchomienia
 1. Sklonuj repozytorium
@@ -13,7 +17,7 @@ git clone https://github.com/S1iwa/Temp-python.git
 ```bash
 pip install -r requirements.txt
 ```
-4. Uruchom program
+3. Uruchom program
 ```bash
 python src/main.py
 ```
