@@ -21,3 +21,13 @@ pip install -r requirements.txt
 ```bash
 python src/main.py
 ```
+## Podział obowiązków:
+1. Implementacja 3 podstawowych funkcji w functions.py - Miłosz Przybył
+2. Utworzenie repozytorium, plik tests.py - Michał Śliwa
+3. Plik README.md - Michał Śliwa, Miłosz Przybył
+
+## Napotkane problemy:
+Merge do brancha main zamiast development.
+
+## Czego się nauczyliśmy:
+Nauczyliśmy się podstaw korzystania z Githuba i Pythona
