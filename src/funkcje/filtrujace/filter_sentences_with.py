@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end, is_conjunction
+from src.funkcje.common import safe_run, get_chars, is_sentence_end, is_conjunction
 
 def filter_conj(stream):
     curr_s, curr_word, last_c = "", "", ""
@@ -21,6 +21,9 @@ def filter_conj(stream):
             curr_s, matches = "", 0
         last_c = c
 
-if __name__ == "__main__":
+def main():
     for s in filter_conj(get_chars()):
         sys.stdout.write(s + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

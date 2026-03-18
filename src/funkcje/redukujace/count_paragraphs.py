@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars
+from src.funkcje.common import safe_run, get_chars
 
 def count_paragraphs(stream):
     count, last, has_content = 0, "", False
@@ -12,5 +12,8 @@ def count_paragraphs(stream):
         last = c
     return count + (1 if has_content else 0)
 
-if __name__ == "__main__":
+def main():
     sys.stdout.write(str(count_paragraphs(get_chars())) + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

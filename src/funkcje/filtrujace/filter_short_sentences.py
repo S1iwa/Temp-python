@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def filter_short_sentences(stream):
     curr_s, word_count, in_word, last_c = "", 0, False, ""
@@ -17,6 +17,9 @@ def filter_short_sentences(stream):
             curr_s, word_count, in_word = "", 0, False
         last_c = c
 
-if __name__ == "__main__":
+def main():
     for s in filter_short_sentences(get_chars()):
         sys.stdout.write(s + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())
