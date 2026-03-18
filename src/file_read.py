@@ -1,5 +1,5 @@
 import sys
-
+#sys.stdout.reconfigure(encoding='utf-8')
 
 def clean_line(line):
     # usuwa whitespace na brzegach i dodatkowe spacje
@@ -9,7 +9,6 @@ def is_empty(line):
     return line.strip() == ""
 
 def read():
-    sys.stdin.reconfigure(encoding='utf-8') #encoding
     lines = sys.stdin.readlines()
 
     result = ""
@@ -41,5 +40,9 @@ def read():
     return result
 
 if __name__ == "__main__":
-    print(read())
+    try:
+        sys.stdout.write(read())
+    except BrokenPipeError:
+        pass
+
 
