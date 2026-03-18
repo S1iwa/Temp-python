@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def find_first_complex_sentence(stream):
     curr_s, commas, last_c = "", 0, ""
@@ -14,7 +14,10 @@ def find_first_complex_sentence(stream):
         last_c = c
     return ""
 
-if __name__ == "__main__":
+def main():
     res = find_first_complex_sentence(get_chars())
     if res:
         sys.stdout.write(res + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def find_longest_sentence(stream):
     curr_s, longest_s, max_l, last = "", "", 0, ""
@@ -17,7 +17,10 @@ def find_longest_sentence(stream):
         longest_s = s_clean
     return longest_s
 
-if __name__ == "__main__":
+def main():
     res = find_longest_sentence(get_chars())
     if res:
         sys.stdout.write(res + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

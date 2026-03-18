@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def find_unique_sentence(stream):
     longest_s, max_l, curr_s = "", 0, ""
@@ -24,7 +24,10 @@ def find_unique_sentence(stream):
         last_c = c
     return longest_s
 
-if __name__ == "__main__":
+def main():
     res = find_unique_sentence(get_chars())
     if res:
         sys.stdout.write(res + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())
