@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars
+from src.funkcje.common import safe_run, get_chars
 
 def count_chars(stream):
     n = 0
@@ -8,5 +8,8 @@ def count_chars(stream):
             n += 1
     return n
 
-if __name__ == "__main__":
+def main():
     sys.stdout.write(str(count_chars(get_chars())) + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

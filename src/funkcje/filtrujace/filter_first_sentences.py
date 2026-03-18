@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def filter_first_sentences(stream, number=20):
     curr_s, last_c, count = "", "", 0
@@ -15,6 +15,9 @@ def filter_first_sentences(stream, number=20):
             curr_s = ""
         last_c = c
 
-if __name__ == "__main__":
+def main():
     for s in filter_first_sentences(get_chars()):
         sys.stdout.write(s + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())

@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end, is_proper_name
+from src.funkcje.common import safe_run, get_chars, is_sentence_end, is_proper_name
 
 def get_percentage(stream):
     total_s, with_p = 0, 0
@@ -24,5 +24,8 @@ def get_percentage(stream):
         with_p += has_p
     return (with_p / total_s * 100) if total_s > 0 else 0
 
-if __name__ == "__main__":
+def main():
     sys.stdout.write(format(get_percentage(get_chars()), ".2f") + "%\n")
+
+if __name__ == "__main__":
+    safe_run(main())

@@ -1,5 +1,14 @@
 import sys
 
+def safe_run(main_func):
+    try:
+        return main_func()
+    except BrokenPipeError:
+        return sys.exit(0)
+    except Exception as e:
+        sys.stdout.write(str(e))
+        sys.exit(1)
+
 def get_chars():
     while char := sys.stdin.read(1):
         yield char

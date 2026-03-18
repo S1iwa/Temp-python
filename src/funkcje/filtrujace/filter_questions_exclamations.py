@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import get_chars, is_sentence_end
+from src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def filter_questions_and_exclamations(stream):
     curr_s, last_c = "", ""
@@ -11,6 +11,9 @@ def filter_questions_and_exclamations(stream):
             curr_s = ""
         last_c = c
 
-if __name__ == "__main__":
+def main():
     for s in filter_questions_and_exclamations(get_chars()):
         sys.stdout.write(s + "\n")
+
+if __name__ == "__main__":
+    safe_run(main())
