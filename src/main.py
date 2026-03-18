@@ -1,6 +1,5 @@
 import src.functions as fnc
 
-
 def main():
     nazwa_zespolu = "Pythonuhy"
     czlonkowie = ["Michał Śliwa", "Miłosz Przybył"]
@@ -15,7 +14,6 @@ def main():
     print(fnc.countMembers(czlonkowie))
     print(fnc.formatGreeting(nazwa_zespolu))
     fnc.printMembers(czlonkowie)
-
 
 if __name__ == "__main__":
     main()
