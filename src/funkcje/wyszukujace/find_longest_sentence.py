@@ -23,4 +23,4 @@ def main():
         sys.stdout.write(res + "\n")
 
 if __name__ == "__main__":
-    safe_run(main())
+    safe_run(main)

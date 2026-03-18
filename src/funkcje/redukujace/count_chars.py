@@ -12,4 +12,4 @@ def main():
     sys.stdout.write(str(count_chars(get_chars())) + "\n")
 
 if __name__ == "__main__":
-    safe_run(main())
+    safe_run(main)
