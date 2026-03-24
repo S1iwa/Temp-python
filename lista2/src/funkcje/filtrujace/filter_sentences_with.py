@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars, is_sentence_end, is_conjunction
+from lista2.src.funkcje.common import safe_run, get_chars, is_sentence_end, is_conjunction
 
 def filter_conj(stream):
     curr_s, curr_word, last_c = "", "", ""

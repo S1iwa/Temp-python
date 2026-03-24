@@ -1,4 +1,4 @@
-import src.functions as fnc
+import lista2.src.functions as fnc
 
 def main():
     nazwa_zespolu = "Pythonuhy"
