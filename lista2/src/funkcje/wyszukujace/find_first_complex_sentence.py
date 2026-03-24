@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars, is_sentence_end
+from lista2.src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def find_first_complex_sentence(stream):
     curr_s, commas, last_c = "", 0, ""

@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars
+from lista2.src.funkcje.common import safe_run, get_chars
 
 def count_chars(stream):
     n = 0

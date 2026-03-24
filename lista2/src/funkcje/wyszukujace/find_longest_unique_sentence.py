@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars, is_sentence_end
+from lista2.src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def find_unique_sentence(stream):
     longest_s, max_l, curr_s = "", 0, ""

@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars, is_sentence_end, is_proper_name
+from lista2.src.funkcje.common import safe_run, get_chars, is_sentence_end, is_proper_name
 
 def get_percentage(stream):
     total_s, with_p = 0, 0

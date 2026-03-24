@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars
+from lista2.src.funkcje.common import safe_run, get_chars
 
 def count_paragraphs(stream):
     count, last, has_content = 0, "", False

@@ -1,4 +1,4 @@
-from src.functions import countMembers
+from lista2.src.functions import countMembers
 
 def main():
     czlonkowieZero = []

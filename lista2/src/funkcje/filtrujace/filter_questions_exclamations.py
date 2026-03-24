@@ -1,5 +1,5 @@
 import sys
-from src.funkcje.common import safe_run, get_chars, is_sentence_end
+from lista2.src.funkcje.common import safe_run, get_chars, is_sentence_end
 
 def filter_questions_and_exclamations(stream):
     curr_s, last_c = "", ""
