@@ -1,5 +1,5 @@
 def sort_log(log, index):
-    if not log:
+    if not isinstance(log, list):
         return []
 
     try:
