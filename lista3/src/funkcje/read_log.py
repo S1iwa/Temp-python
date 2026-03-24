@@ -58,6 +58,3 @@ def read_log():
     for line in get_lines():
         tuples.append(create_tuple(line))
     return tuples
-
-if __name__ == "__main__":
-    print(read_log())
