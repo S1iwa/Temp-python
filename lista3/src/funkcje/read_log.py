@@ -51,10 +51,16 @@ def create_tuple(line):
     method = fields[7]
     host = fields[8]
     uri = fields[9]
-    return ts, uid, id_orig_h, id_orig_p, id_resp_h, id_resp_p, method, host, uri
+    status_code = int(fields[14]) if fields[14] != "-" else 0
+    return ts, uid, id_orig_h, id_orig_p, id_resp_h, id_resp_p, method, host, uri, status_code
 
 def read_log():
     tuples = []
     for line in get_lines():
         tuples.append(create_tuple(line))
     return tuples
+
+if __name__ == "__main__":
+    tuples = read_log()
+    for tup in tuples:
+        print(tup)
