@@ -42,22 +42,28 @@ def divide_line(line):
 def create_tuple(line):
     fields = divide_line(line)
 
-    ts = datetime.datetime.fromtimestamp(float(fields[0]))
-    uid = fields[1]
-    id_orig_h = fields[2]
-    id_orig_p = int(fields[3])
-    id_resp_h = fields[4]
-    id_resp_p = int(fields[5])
-    method = fields[7]
-    host = fields[8]
-    uri = fields[9]
-    status_code = int(fields[14]) if fields[14] != "-" else 0
-    return ts, uid, id_orig_h, id_orig_p, id_resp_h, id_resp_p, method, host, uri, status_code
+    try:
+        ts = datetime.datetime.fromtimestamp(float(fields[0]))
+        uid = fields[1]
+        id_orig_h = fields[2]
+        id_orig_p = int(fields[3])
+        id_resp_h = fields[4]
+        id_resp_p = int(fields[5])
+        method = fields[7]
+        host = fields[8]
+        uri = fields[9]
+        status_code = int(fields[14]) if fields[14] != "-" else 0
+
+        return ts, uid, id_orig_h, id_orig_p, id_resp_h, id_resp_p, method, host, uri, status_code
+    except (ValueError, TypeError):
+        return None
 
 def read_log():
     tups = []
     for line in get_lines():
-        tups.append(create_tuple(line))
+        tup = create_tuple(line)
+        if tup:
+            tups.append(tup)
     return tups
 
 if __name__ == "__main__":
