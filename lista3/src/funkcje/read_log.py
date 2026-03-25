@@ -55,10 +55,10 @@ def create_tuple(line):
     return ts, uid, id_orig_h, id_orig_p, id_resp_h, id_resp_p, method, host, uri, status_code
 
 def read_log():
-    tuples = []
+    tups = []
     for line in get_lines():
-        tuples.append(create_tuple(line))
-    return tuples
+        tups.append(create_tuple(line))
+    return tups
 
 if __name__ == "__main__":
     tuples = read_log()
