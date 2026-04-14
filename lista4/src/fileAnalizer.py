@@ -35,7 +35,7 @@ def main():
                 except subprocess.CalledProcessError as e:
                     print(f"Błąd uruchamiania dla {filepath}: {e}")
                 except json.JSONDecodeError:
-                    print(f"Błąd parsowania JSON dla {filepath}. Zwrócono: {output}")
+                    print(f"Błąd parsowania JSON dla {filepath}.")
 
     total_files = len(results)
     total_chars = sum(r.get('total_characters', 0) for r in results)
