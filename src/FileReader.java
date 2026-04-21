@@ -35,6 +35,7 @@ public class FileReader {
                     if (word.isEmpty())
                         continue;
                     totalWords++;
+                    // Zostawia litery i cyfry i konwertuje duże litery na małe
                     String cleanWord = word.replaceAll("[^\\p{L}\\p{Nd}]+", "").toLowerCase();
                     if (!cleanWord.isEmpty())
                         wordFrequencies.put(cleanWord, wordFrequencies.getOrDefault(cleanWord, 0L) + 1);
@@ -77,8 +78,11 @@ public class FileReader {
     private static String escapeJson(String input) {
         if (input == null)
             return "";
+                // Podwaja ukośniki
         return input.replace("\\", "\\\\")
+                // Dokleja ukośnik przed cudzysłowem
                 .replace("\"", "\\\"")
+                // Zamienia fizyczne, niewidoczne znaki na ich tekstowe zapisy
                 .replace("\n", "\\n")
                 .replace("\r", "\\r");
     }

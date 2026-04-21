@@ -26,6 +26,7 @@ def main():
                         check=True
                     )
 
+                    # Usuwa ewentualne znaki białe na końcu i początku
                     output = process.stdout.strip()
                     if output:
                         data = json.loads(output)
