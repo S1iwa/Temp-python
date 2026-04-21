@@ -1,56 +1,43 @@
 import re
-import unicodedata
-import csv
+from data_parser import parse_data
 
-def load_metadata(filepath):
-    with open(filepath, mode='r', encoding='utf-8') as file:
-        reader = csv.DictReader(file, delimiter=',')
-        return list(reader)
 
-def remove_diacritics(text):
-    # unicodedata wiekszosc polskich znakow zamienia na na litere + ogonek np na ą na a + coś
-    # a nie robi tego z ł bo jest idk upośledzone
-    # i potem następnie z Mn usuwamy to przez co zamienia polskie znaki na zwykłe bez ogonków
-    text = text.replace(' ', '_').replace('ł', 'l').replace('Ł', 'L')
-    return ''.join(c for c in unicodedata.normalize('NFD', text) if unicodedata.category(c) != 'Mn')
+def zadanie_4(dir_path="../data"):
+    dane = parse_data(dir_path)
+    stacje = list(dane["stacje"].values())
 
-def analyze_stations(stations_data):
-    for row in stations_data:
-        row_text = " ".join(row.values())
-        print(row_text)
+    # a
+    re_data = re.compile(r"\b\d{4}-\d{2}-\d{2}\b")
+    daty = [re_data.findall(s[k]) for s in stacje for k in ["Data uruchomienia", "Data zamknięcia"] if s.get(k)]
 
-        # a
-        dates_target = f"{row.get('Data uruchomienia', '')} {row.get('Data zamknięcia', '')}"
-        dates = re.findall(r'\b\d{4}-\d{2}-\d{2}\b', dates_target)
-        print(dates)
+    # b
+    re_wspol = re.compile(r"-?\d+\.\d{6}")
+    wspolrzedne = [re_wspol.findall(s[k]) for s in stacje for k in ["WGS84 φ N", "WGS84 λ E"] if s.get(k)]
 
-        # b
-        coords = re.findall(r'\b\d+\.\d{6}\b', row_text)
-        print(coords)
+    # c
+    re_2czlony = re.compile(r"^[^-]+-[^-]+$")
+    dwuczlony = [s["Nazwa stacji"] for s in stacje if re_2czlony.match(s["Nazwa stacji"])]
 
-        # c
-        station_name = row.get('Nazwa stacji', '')
-        two_parts = bool(re.fullmatch(r'[^-]+-[^-]+', station_name))
-        print(two_parts)
+    # d
+    mapa = str.maketrans("ąćęłńóśźżĄĆĘŁŃÓŚŹŻ", "acelnoszzACELNOSZZ")
+    zmienione_nazwy = [s["Nazwa stacji"].translate(mapa).replace(" ", "_") for s in stacje]
 
-        # d
-        clean_name = remove_diacritics(station_name)
-        print(clean_name)
+    # e
+    stacje_mob = [s for s in stacje if s["Kod stacji"].endswith("MOB")]
+    czy_mobilne = all(s["Rodzaj stacji"].lower() == "mobilna" for s in stacje_mob)
 
-        # e
-        kod = row.get('Kod stacji', '')
-        rodzaj = row.get('Rodzaj stacji', '')
-        is_valid_mob = not (kod.endswith('MOB') and rodzaj.lower() != 'mobilna')
-        print(is_valid_mob)
+    # f
+    re_3czlony = re.compile(r"^[^-]+-[^-]+-[^-]+$")
+    trzyczlony = [s["Nazwa stacji"] for s in stacje if re_3czlony.match(s["Nazwa stacji"])]
 
-        # f
-        three_parts = bool(re.fullmatch(r'[^-]+-[^-]+-[^-]+', station_name))
-        print(three_parts)
+    # g
+    re_ulal = re.compile(r",.*\b(?:ul|al)\.", re.IGNORECASE)
+    ul_al = [s["Adres"] for s in stacje if s.get("Adres") and re_ulal.search(s["Adres"])]
 
-        # g
-        has_street = bool(re.search(r',.*\b(?:ul\.|al\.)', row_text, re.IGNORECASE))
-        print(has_street)
+    return daty, wspolrzedne, dwuczlony, zmienione_nazwy, czy_mobilne, trzyczlony, ul_al
 
-if __name__ == '__main__':
-    stations_data = load_metadata('../data/stacje.csv')
-    analyze_stations(stations_data)
+
+if __name__ == "__main__":
+    wyniki = zadanie_4()
+    print("Czy stacje MOB są zawsze mobilne?", wyniki[4])
+    print("Przykładowe stacje 3-członowe:", wyniki[5][:3])

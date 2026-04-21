@@ -35,8 +35,10 @@ def parse_data(dir_path):
                 result["pomiary"][file_name] = data
 
     return result
-data = parse_data("../data")
 
-# przykład:
-print(data["stacje"]["DsBialka"])
-print(data["pomiary"]["2023_PM10_24g.csv"][:3])
+if __name__ == "__main__":
+    data = parse_data("../data")
+
+    # przykład:
+    print(data["stacje"]["DsBialka"])
+    print(data["pomiary"]["2023_PM10_24g.csv"][:3])
