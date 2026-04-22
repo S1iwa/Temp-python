@@ -22,5 +22,6 @@ def group_measurement_files_by_key(path: Path) -> dict:
 
     return result
 
-res = group_measurement_files_by_key(Path("../data/measurements"))
-print(res)
+if __name__ == "__main__":
+    res = group_measurement_files_by_key(Path("../data/measurements"))
+    print(res)
