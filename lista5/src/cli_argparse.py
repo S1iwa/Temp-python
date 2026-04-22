@@ -18,15 +18,15 @@ def konfiguruj_logowanie():
         def filter(self, record):
             return record.levelno <= logging.WARNING
 
-    h_stdout = logging.StreamHandler(sys.stdout)
-    h_stdout.addFilter(StdoutFilter())
-    h_stdout.setFormatter(fmt)
-    logger.addHandler(h_stdout)
+    stdout = logging.StreamHandler(sys.stdout)
+    stdout.addFilter(StdoutFilter())
+    stdout.setFormatter(fmt)
+    logger.addHandler(stdout)
 
-    h_stderr = logging.StreamHandler(sys.stderr)
-    h_stderr.setLevel(logging.ERROR)
-    h_stderr.setFormatter(fmt)
-    logger.addHandler(h_stderr)
+    stderr = logging.StreamHandler(sys.stderr)
+    stderr.setLevel(logging.ERROR)
+    stderr.setFormatter(fmt)
+    logger.addHandler(stderr)
     return logger
 
 
@@ -90,7 +90,7 @@ def main():
         logger.info(f"Otwieranie pliku: {sciezka_pliku.name}")
         try:
             with sciezka_pliku.open(encoding="utf-8") as f:
-                reader = csv.reader(f, delimiter=',')  # Ustawione twardo na przecinek
+                reader = csv.reader(f, delimiter=',')
 
                 mapa_kolumn = {}
 
@@ -102,7 +102,6 @@ def main():
                     bajt_wiersza = len(",".join(row).encode('utf-8'))
                     logger.debug(f"Przeczytano bajtów: {bajt_wiersza}")
 
-                    # Wyszukiwanie kodów stacji (drugi wiersz, indeks 1)
                     if row_num == 1 and row[0] == "Kod stacji":
                         for i in range(1, len(row)):
                             if row[i].strip():

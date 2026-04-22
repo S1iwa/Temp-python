@@ -30,7 +30,7 @@ def zadanie_4(dir_path="../data"):
     re_3czlony = re.compile(r"^[^-]+-[^-]+-[^-]+$")
     trzyczlony = [s["Nazwa stacji"] for s in stacje if re_3czlony.match(s["Nazwa stacji"])]
 
-    # g
+    # gS
     re_ulal = re.compile(r",.*\b(?:ul|al)\.", re.IGNORECASE)
     ul_al = [s["Adres"] for s in stacje if s.get("Adres") and re_ulal.search(s["Adres"])]
 

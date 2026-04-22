@@ -11,7 +11,7 @@ from group_measurement_files_by_key import group_measurement_files_by_key
 
 app = typer.Typer(help="Analiza danych GIOŚ z użyciem Typer")
 
-# Logowanie (z zadania 6)
+# Logowanie
 logger = logging.getLogger("Lab5_Typer")
 logger.setLevel(logging.WARNING)
 h_stdout = logging.StreamHandler()
@@ -61,7 +61,8 @@ def pobierz_dane(wielkosc, czestotliwosc, start_date, koniec_date, dir_path):
             mapa_kolumn = {}
 
             for row_num, row in enumerate(reader):
-                if not row: continue
+                if not row:
+                    continue
 
                 if row_num == 1 and row[0] == "Kod stacji":
                     mapa_kolumn = {i: r.strip() for i, r in enumerate(row) if i > 0 and r.strip()}
